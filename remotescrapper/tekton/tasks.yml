@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: cleanup-task
+spec:
+  steps:
+    - name: cleanup-step
+      image: python:3.8
+      script: |
+        rm -rf temp/
+       
+
+---
+
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nose-test-task
+spec:
+  steps:
+    - name: nose-test-step
+      image: python:3.8
+      script: |
+        pip install nose
+        nosetests tests/
+        

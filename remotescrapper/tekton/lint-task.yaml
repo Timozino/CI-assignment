@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: lint-task
+spec:
+  steps:
+    - name: lint-step
+      image: python:3.8
+      script:
+        - pylint scrape.py
+        
